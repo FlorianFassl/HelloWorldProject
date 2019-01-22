@@ -24,4 +24,5 @@ public class BubbleSortz {
             	
        
 	
-}}}}}
+}}}
+            for (int i = 0;)}}
