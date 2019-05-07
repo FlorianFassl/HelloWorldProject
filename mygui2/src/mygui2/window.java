@@ -30,6 +30,13 @@ public class window {
 	private Label LNL;
 	private Text LNTF;
 	private Button btnCancel;
+	private Label vornameOut;
+	private Label nachnameOut;
+	private Label straﬂeOut;
+	private Label hausnummerOut;
+	private Label plzOut;
+	private Label ortOut;
+	private Label lnOut;
 
 	/**
 	 * Launch the application.
@@ -66,7 +73,7 @@ public class window {
 		shell = new Shell();
 		shell.setAlpha(213);
 		shell.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND));
-		shell.setSize(444, 554);
+		shell.setSize(613, 554);
 		shell.setText("SWT Application");
 		
 		Button btnMiknoppekommisarkoppe = new Button(shell, SWT.NONE);
@@ -82,6 +89,16 @@ public class window {
 				System.out.println(PLZTF.getText());
 				System.out.println(OrtTF.getText());
 				System.out.println(LNTF.getText());
+				//
+				getVornameOut().setText(getVornameTF().getText());
+				getNachnameOut().setText(getNachnameTF().getText());
+				getStraﬂeOut().setText(getStrasseTF().getText());
+				getHausnummerOut().setText(getHausnummerTF().getText());
+				getPlzOut().setText(getPLZTF().getText());
+				getOrtOut().setText(getOrtTF().getText());
+				getLnOut().setText(getLNTF().getText());
+				
+				
 			}
 		});
 		btnMiknoppekommisarkoppe.setBounds(10, 10, 75, 25);
@@ -162,7 +179,70 @@ public class window {
 	
 			}
 		});
-		composite.setBounds(134, 287, 250, 145);
+		composite.setBounds(132, 286, 250, 145);
 		
+		vornameOut = new Label(shell, SWT.NONE);
+		vornameOut.setBounds(368, 15, 87, 20);
+		
+		nachnameOut = new Label(shell, SWT.NONE);
+		nachnameOut.setBounds(370, 47, 85, 21);
+		
+		straﬂeOut = new Label(shell, SWT.NONE);
+		straﬂeOut.setBounds(380, 77, 55, 15);
+		
+		hausnummerOut = new Label(shell, SWT.NONE);
+		hausnummerOut.setBounds(380, 108, 55, 15);
+		
+		plzOut = new Label(shell, SWT.NONE);
+		plzOut.setBounds(380, 143, 55, 15);
+		
+		ortOut = new Label(shell, SWT.NONE);
+		ortOut.setBounds(380, 174, 55, 15);
+		
+		lnOut = new Label(shell, SWT.NONE);
+		lnOut.setBounds(428, 216, 55, 15);
+		
+	}
+	public Label getVornameOut() {
+		return vornameOut;
+	}
+	public Text getVornameTF() {
+		return VornameTF;
+	}
+	public Label getNachnameOut() {
+		return nachnameOut;
+	}
+	public Text getNachnameTF() {
+		return NachnameTF;
+	}
+	public Label getStraﬂeOut() {
+		return straﬂeOut;
+	}
+	public Text getStrasseTF() {
+		return StrasseTF;
+	}
+	public Label getHausnummerOut() {
+		return hausnummerOut;
+	}
+	public Text getPLZTF() {
+		return PLZTF;
+	}
+	public Label getOrtOut() {
+		return ortOut;
+	}
+	public Text getOrtTF() {
+		return OrtTF;
+	}
+	public Label getLnOut() {
+		return lnOut;
+	}
+	public Text getLNTF() {
+		return LNTF;
+	}
+	public Text getHausnummerTF() {
+		return HausnummerTF;
+	}
+	public Label getPlzOut() {
+		return plzOut;
 	}
 }
