@@ -9,6 +9,9 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+import data.Person;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.events.MouseEvent;
@@ -98,7 +101,25 @@ public class window {
 				getOrtOut().setText(getOrtTF().getText());
 				getLnOut().setText(getLNTF().getText());
 				
+				Person p1;
+				p1 = new Person();
+				p1.setVorname(getVornameTF().getText());
+				p1.setNachname(getNachnameTF().getText());
+				p1.setStrasse(getStrasseTF().getText());
+				p1.setHausnummer(getHausnummerTF().getText());
+				p1.setPlz(getPLZTF().getText());
+				p1.setOrt(getOrtTF().getText());
+			
 				
+				Person.getListe().add(p1);
+				System.out.println(Person.getListe());
+				getVornameTF().setText("");
+				getNachnameTF().setText("");
+				getStrasseTF().setText("");
+				getHausnummerTF().setText("");
+				getPLZTF().setText("");
+				getOrtTF().setText("");
+			
 			}
 		});
 		btnMiknoppekommisarkoppe.setBounds(10, 10, 75, 25);
