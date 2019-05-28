@@ -1,14 +1,25 @@
 package mygui2;
 
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
+
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 
 import data.Person;
 
@@ -40,6 +51,7 @@ public class window {
 	private Label plzOut;
 	private Label ortOut;
 	private Label lnOut;
+	private Button btnLoad;
 
 	/**
 	 * Launch the application.
@@ -222,6 +234,44 @@ public class window {
 		
 		lnOut = new Label(shell, SWT.NONE);
 		lnOut.setBounds(428, 216, 55, 15);
+		
+		Button btnSave = new Button(shell, SWT.NONE);
+		btnSave.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				System.out.println(gson.toJson(Person.getListe()));
+				try {
+					File jsonFile = File.createTempFile("wdfinf-json-", ".humptydumpty");
+					FileWriter fw = new FileWriter(jsonFile);
+					gson.toJson(Person.getListe(), fw);
+					fw.flush();
+					fw.close();
+					//
+					//exyplorer öffen %Temp%
+				} catch (JsonIOException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		btnSave.setBounds(10, 77, 75, 25);
+		btnSave.setText("save");
+		
+		btnLoad = new Button(shell, SWT.NONE);
+		btnLoad.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				FileDialog fd = new FileDialog(shell, SWT.OPEN);
+				fd.setFilterExtensions(new String[] {"humptydumpty"});
+				fd.setFilterPath("%TEMP%");
+				fd.open();
+			}
+		});
+		btnLoad.setBounds(10, 117, 75, 25);
+		btnLoad.setText("load");
 		
 	}
 	public Label getVornameOut() {
