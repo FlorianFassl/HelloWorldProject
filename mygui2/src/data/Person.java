@@ -6,6 +6,10 @@ public class Person {
 
 	private static ArrayList<Person> liste = new ArrayList<Person>();
 
+	public static void setListe(ArrayList<Person> liste) {
+		Person.liste = liste;
+	}
+
 	private String vorname;
 	private String nachname;
 	private String plz;
